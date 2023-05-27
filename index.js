@@ -5,13 +5,13 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
+const PORT = process.env.SERVER_PORT ? process.env.SERVER_PORT : 8080;
+
 app.use(express.json());
 app.use(cors());
 
-app.get('/tarodando', (_req, res) => res.send('sim'));
-app.post('/send-email', sendEmail);
+app.post('/', sendEmail);
 
-const PORT = process.env.SERVER_PORT ? process.env.SERVER_PORT : 8080;
 app.listen(PORT, () => console.log('online na porta: ', PORT));
 
 async function sendEmail(req, res) {
