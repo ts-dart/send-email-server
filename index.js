@@ -18,7 +18,7 @@ app.listen(PORT, () => console.log('online na porta: ', PORT));
 async function sendEmail(req, res) {
   const { email, contentEmail } = req.body;
 
-  if (typeof email !== 'string' && typeof contentEmail !== 'string') {
+  if (typeof email !== 'string') {
     res.status(400).json({ sent: false, error: 'Parâmetros inválidos na requisição' });
     return 0;
   }
