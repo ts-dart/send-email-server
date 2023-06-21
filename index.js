@@ -18,7 +18,7 @@ app.listen(PORT, () => console.log('online na porta: ', PORT));
 async function sendEmail(req, res) {
   const { email, contentEmail } = req.body;
 
-  if (typeof email !== 'string') {
+  if (typeof contentEmail !== 'string') {
     res.status(400).json({ sent: false, error: 'Parâmetros inválidos na requisição' });
     return 0;
   }
@@ -35,9 +35,9 @@ async function sendEmail(req, res) {
 
     const mailOptions = {
       from: 'thiagoedusan5.11@outlook.com',
-      to: email,
-      subject: 'Feedback do projeto Solar System eviado por',
-      text: contentEmail ? contentEmail : '',
+      to: email ? email : '',
+      subject: 'Feedback',
+      text: contentEmail,
     };
   
     await transporter.sendMail(mailOptions);
