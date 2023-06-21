@@ -37,7 +37,7 @@ async function sendEmail(req, res) {
       from: 'thiagoedusan5.11@outlook.com',
       to: email,
       subject: 'Feedback do projeto Solar System eviado por',
-      text: contentEmail,
+      text: contentEmail ? contentEmail : '',
     };
   
     await transporter.sendMail(mailOptions);
